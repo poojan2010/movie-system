@@ -83,9 +83,17 @@ class MovieController extends Controller
      * @param  \App\Models\movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function show(movie $movie)
+    public function show()
     {
         return view('movielist',['movielist'=> movie::all()]);
+    }
+    public function usershow()
+    {
+        return view('home',['movielist'=> movie::all()]);
+    }
+    public function moviedetails($id)
+    {
+        return view('moviedetails',['movielist'=> movie::where('id',$id)->first()]);
     }
 
     /**

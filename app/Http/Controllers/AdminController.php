@@ -33,7 +33,7 @@ class AdminController extends Controller
             }
             else
             {
-                return 'user side';
+                return redirect('/home');
             }
         }
         else

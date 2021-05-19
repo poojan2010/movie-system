@@ -70,9 +70,10 @@ class TheatreController extends Controller
      * @param  \App\Models\theatre  $theatre
      * @return \Illuminate\Http\Response
      */
-    public function edit(theatre $theatre)
+    public function edit($id)
     {
-        //
+        $edittheatre = theatre::findOrfail($id);
+        return view('edittheatre',compact('edittheatre'));
     }
 
     /**
@@ -82,9 +83,14 @@ class TheatreController extends Controller
      * @param  \App\Models\theatre  $theatre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, theatre $theatre)
+    public function update(Request $request,$id)
     {
-        //
+        $edittheatre = theatre::findOrfail($id);
+        $edittheatre->name =$request->name;
+        $edittheatre->area =$request->area;
+        $edittheatre->city =$request->city;
+        $edittheatre->save();
+        return redirect('theatrelist');
     }
 
     /**
