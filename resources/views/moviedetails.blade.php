@@ -11,11 +11,16 @@
     </div>
     <div class="col-4">
         <h1>{{ $movielist->title }}</h1>
-        <h4>{{ $movielist->release_year }}</h4>
+        <br>
+        <h5><i>{{ $movielist->release_year }}</i></h5>
+        <br>
         <h4>Cast</h4>
-        {{ $movielist->cast_member }}
+        <i>{{ $movielist->cast_member }}</i>
+        <br><br>
         <h4>About Movie</h4>
-        {{ $movielist->overview }}
+        <i>{{ $movielist->overview }}</i>
+        <br><br><br>
+        <a href="/booknow"><button class="btn btn-dark">Book Now</button></a>
     </div>
 
 </div>

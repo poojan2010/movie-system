@@ -75,6 +75,11 @@ class AdminController extends Controller
         //
     }
 
+    public function logout()
+    {
+        return redirect('/');
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

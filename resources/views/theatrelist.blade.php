@@ -13,6 +13,7 @@
             <th>Name</th>
             <th>Area</th>
             <th>City</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>

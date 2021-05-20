@@ -35,6 +35,7 @@ Route::view('addmovie' , 'addmovie');
 Route::view('addstarcast' , 'addstarcast');
 Route::view('addtheatre' , 'addtheatre');
 Route::view('moviedetails' , 'moviedetails');
+Route::view('booknow' , 'booknow');
 
 
 Route::post('/addmovie',[MovieController::class,'store']);
@@ -62,3 +63,7 @@ Route::post('/edittheatre/{id}',[TheatreController::class,'update']);
 Route::get('/home',[MovieController::class,'usershow']);
 
 Route::get('/moviedetails/{id}',[MovieController::class,'moviedetails']);
+
+Route::get('/logout',[AdminController::class,'logout']);
+
+

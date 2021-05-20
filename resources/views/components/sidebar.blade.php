@@ -6,11 +6,11 @@
 
 <!-- Sidebar -->
 <div class="w3-sidebar w3-grey w3-bar-block" style="width:16%">
-    <h3 class="w3-bar-item">Menu</h3>
+    <h2 class="w3-bar-item"><b>Menu</b></h2><br>
 
 
     <div class="w3-dropdown-hover">
-        <button class="w3-button">Movies</button>
+        <button class="w3-button"><h4>Movies</h4></button>
         <div class="w3-dropdown-content w3-bar-block">
             <a href="/addmovie" class="w3-bar-item w3-button">Add Movie</a>
             <a href="/movielist" class="w3-bar-item w3-button">Movie list</a>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="w3-dropdown-hover">
-        <button class="w3-button">Starcast</button>
+        <button class="w3-button"><h4>Starcast</h4></button>
         <div class="w3-dropdown-content w3-bar-block">
             <a href="/addstarcast" class="w3-bar-item w3-button">Add Starcast</a>
             <a href="/starcastlist" class="w3-bar-item w3-button">Starcast list</a>
@@ -26,7 +26,7 @@
     </div>
 
     <div class="w3-dropdown-hover">
-        <button class="w3-button">Theatre</button>
+        <button class="w3-button"><h4>Theatre</h4></button>
         <div class="w3-dropdown-content w3-bar-block">
             <a href="/addtheatre" class="w3-bar-item w3-button">Add Theatre</a>
             <a href="/theatrelist" class="w3-bar-item w3-button">Theatre list</a>
