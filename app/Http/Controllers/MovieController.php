@@ -91,9 +91,9 @@ class MovieController extends Controller
     {
         return view('home',['movielist'=> movie::latest()->get()]);
     }
-    public function moviedetails($id)
+    public function moviedetails($m_id)
     {
-        return view('moviedetails',['movielist'=> movie::where('id',$id)->first()]);
+        return view('moviedetails',['movielist'=> movie::where('m_id',$m_id)->first()]);
     }
 
     /**
@@ -102,11 +102,11 @@ class MovieController extends Controller
      * @param  \App\Models\movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function edit(movie $id)
+    public function edit(movie $m_id)
     {
        /* $editmovie = movie::findOrfail($id);
         return view('editmovie',compact('editmovie'));*/
-        return view('editmovie',['editmovie' => $id]);
+        return view('editmovie',['editmovie' => $m_id]);
     }
 
     /**
@@ -116,7 +116,7 @@ class MovieController extends Controller
      * @param  \App\Models\movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $m_id)
     {
         /*if(is_null($request->file))
         {
@@ -145,7 +145,7 @@ class MovieController extends Controller
         }*/
         if(is_null($request->file))
         {
-            movie::where('id', $id)->update([
+            movie::where('m_id', $m_id)->update([
                 'title' => $request->title,
                 'overview' => $request->overview,
                 'release_year' => $request->release_year,
@@ -157,7 +157,7 @@ class MovieController extends Controller
         else
         {
             $request->file('image')->move('Uploads', $request->file('image')->getClientOriginalName());
-            movie::where('id', $id)->update([
+            movie::where('m_id', $m_id)->update([
                 'title' => $request->title,
                 'overview' => $request->overview,
                 'image' => $request->file('image')->getClientOriginalName(),
@@ -177,9 +177,11 @@ class MovieController extends Controller
      * @param  \App\Models\movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($m_id)
     {
-        $movie = movie::findOrfail($id);
+        //dd($m_id);
+        $movie = movie::find($m_id);
+        //dd($movie);
         $movie->delete();
         return redirect('movielist');
     }

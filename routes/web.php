@@ -41,9 +41,9 @@ Route::view('booknow' , 'booknow');
 Route::post('/addmovie',[MovieController::class,'store']);
 Route::get('/movielist',[MovieController::class,'show']);
 Route::post('/admin' , [AdminController::class,'index']);
-Route::get('/deletemovie/{id}',[MovieController::class,'destroy']);
-Route::get('/editmovie/{id}',[MovieController::class,'edit']);
-Route::post('/editmovie/{id}', [MovieController::class, 'update']);
+Route::get('/deletemovie/{m_id}',[MovieController::class,'destroy']);
+Route::get('/editmovie/{m_id}',[MovieController::class,'edit']);
+Route::post('/editmovie/{m_id}', [MovieController::class, 'update']);
 //Route::post('/admin1',[MovieController::class,'index']);
 
 Route::post('/register' ,[UserController::class , 'store'] );
@@ -62,7 +62,7 @@ Route::post('/edittheatre/{id}',[TheatreController::class,'update']);
 
 Route::get('/home',[MovieController::class,'usershow']);
 
-Route::get('/moviedetails/{id}',[MovieController::class,'moviedetails']);
+Route::get('/moviedetails/{m_id}',[MovieController::class,'moviedetails']);
 
 Route::get('/logout',[AdminController::class,'logout']);
 

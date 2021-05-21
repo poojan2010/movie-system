@@ -22,7 +22,7 @@
     <tbody>
     @foreach($movielist as $movie)
         <tr>
-            <td> {{$movie->id}} </td>
+            <td> {{$movie->m_id}} </td>
             <td> {{$movie->title}} </td>
             <td> {{$movie->overview}} </td>
 
@@ -34,10 +34,10 @@
                 <form method="get">
                 @csrf
                     @method('UPDATE')
-                    <a href="{{ url('/editmovie',$movie->id) }}" class="btn btn-success"><i class="far fa-edit"></i></a>
+                    <a href="{{ url('/editmovie',$movie->m_id) }}" class="btn btn-success"><i class="far fa-edit"></i></a>
 
                     @method('DELETE')
-                    <a href="{{ url('/deletemovie',$movie->id) }}" type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                    <a href="{{ url('/deletemovie',$movie->m_id) }}" type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                 </form>
             </td>
         </tr>

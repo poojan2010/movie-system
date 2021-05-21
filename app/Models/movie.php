@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class movie extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'm_id';
     protected $fillable = ['title','overview','image','release_year','runtime','cast_member'];
 
     public function getImageAttribute($value)

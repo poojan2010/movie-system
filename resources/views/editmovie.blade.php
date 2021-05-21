@@ -13,7 +13,7 @@
             <b><i>EDIT MOVIE</i></b>
         </div>
         <div class="card-body">
-            <form method="post" action="{{ url('/editmovie',$editmovie->id) }}" enctype="multipart/form-data">
+            <form method="post" action="{{ url('/editmovie',$editmovie->m_id) }}" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="title" class="form-label"><b>Title</b></label>
