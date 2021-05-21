@@ -66,4 +66,6 @@ Route::get('/moviedetails/{id}',[MovieController::class,'moviedetails']);
 
 Route::get('/logout',[AdminController::class,'logout']);
 
+Route::get('/search/', [MovieController::class,'search'])->name('search');
+
 

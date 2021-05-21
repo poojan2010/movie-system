@@ -62,7 +62,6 @@ class MovieController extends Controller
 
         ]);
 
-
         $request->file('image')->move('Uploads',$request->file('image')->getClientOriginalName());
         $movie = movie::create([
             'title' => $request->title,
@@ -87,9 +86,10 @@ class MovieController extends Controller
     {
         return view('movielist',['movielist'=> movie::all()]);
     }
+
     public function usershow()
     {
-        return view('home',['movielist'=> movie::all()]);
+        return view('home',['movielist'=> movie::latest()->get()]);
     }
     public function moviedetails($id)
     {
@@ -102,10 +102,11 @@ class MovieController extends Controller
      * @param  \App\Models\movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(movie $id)
     {
-        $editmovie = movie::findOrfail($id);
-        return view('editmovie',compact('editmovie'));
+       /* $editmovie = movie::findOrfail($id);
+        return view('editmovie',compact('editmovie'));*/
+        return view('editmovie',['editmovie' => $id]);
     }
 
     /**
@@ -117,7 +118,7 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(is_null($request->file))
+        /*if(is_null($request->file))
         {
             $editmovie = movie::findOrfail($id);
             $editmovie->title =$request->title;
@@ -141,7 +142,33 @@ class MovieController extends Controller
             $editmovie->cast_member =$request->cast_member;
             $editmovie->save();
             return redirect('movielist');
+        }*/
+        if(is_null($request->file))
+        {
+            movie::where('id', $id)->update([
+                'title' => $request->title,
+                'overview' => $request->overview,
+                'release_year' => $request->release_year,
+                'runtime' => $request->runtime,
+                'cast_member' => $request->cast_member,
+            ]);
+            return redirect('movielist');
         }
+        else
+        {
+            $request->file('image')->move('Uploads', $request->file('image')->getClientOriginalName());
+            movie::where('id', $id)->update([
+                'title' => $request->title,
+                'overview' => $request->overview,
+                'image' => $request->file('image')->getClientOriginalName(),
+                'release_year' => $request->release_year,
+                'runtime' => $request->runtime,
+                'cast_member' => $request->cast_member,
+
+            ]);
+            return redirect('movielist');
+        }
+
     }
 
     /**
@@ -156,4 +183,20 @@ class MovieController extends Controller
         $movie->delete();
         return redirect('movielist');
     }
+
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+
+        // Search in the title and body columns from the posts table
+        $movielist = movie::query()
+            ->where('title', 'LIKE', "%{$search}%")
+            /*->orWhere('body', 'LIKE', "%{$search}%")*/
+            ->get();
+
+        //dd($posts);
+        // Return the search view with the resluts compacted
+        return view('home', compact('movielist'));
+    }
+
 }
