@@ -3,7 +3,7 @@
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a href="/home" class="navbar-brand" href="#">
             <img src="../Images/movielogo.jpg" alt="" width="70" height="50">
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -14,7 +14,6 @@
                         <input class="form-control me-2" name="search" style="width:500px;" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
-
                 </li>
                 <li class="nav-link active mt-2" style="margin-left:680px;">
                     {{ Auth::guard('admin')->user()->name }}

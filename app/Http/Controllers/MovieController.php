@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\booknow;
 use App\Models\movie;
 use Illuminate\Http\Request;
 
@@ -96,6 +97,14 @@ class MovieController extends Controller
         return view('moviedetails',['movielist'=> movie::where('m_id',$m_id)->first()]);
     }
 
+    public function movieidname($id)
+    {
+        //dd($id);
+        $booknow = movie::find($id);
+        //dd($booknow);
+        return view('booknow',compact('booknow'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -104,8 +113,6 @@ class MovieController extends Controller
      */
     public function edit(movie $m_id)
     {
-       /* $editmovie = movie::findOrfail($id);
-        return view('editmovie',compact('editmovie'));*/
         return view('editmovie',['editmovie' => $m_id]);
     }
 
@@ -200,5 +207,6 @@ class MovieController extends Controller
         // Return the search view with the resluts compacted
         return view('home', compact('movielist'));
     }
+
 
 }

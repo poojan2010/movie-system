@@ -20,9 +20,11 @@
         <h4>About Movie</h4>
         <i>{{ $movielist->overview }}</i>
         <br><br><br>
-        <a href="/booknow"><button class="btn btn-dark">Book Now</button></a>
+{{--        <a href="/booknow/{{$movielist->m_id}}"><button class="btn btn-dark">Book Now</button></a>--}}
+        <a href="/movieidname/{{$movielist->m_id}}"><button class="btn btn-dark">Book Now</button></a>
     </div>
 
 </div>
 </body>
 </html>
+

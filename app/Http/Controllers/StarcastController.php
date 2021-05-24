@@ -74,10 +74,11 @@ class StarcastController extends Controller
      * @param  \App\Models\starcast  $starcast
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(starcast $id)
     {
-        $editstarcast = starcast::findOrfail($id);
-        return view('editstarcast',compact('editstarcast'));
+//        $editstarcast = starcast::findOrfail($id);
+//        return view('editstarcast',compact('editstarcast'));
+        return view('editstarcast',['editstarcast' => $id]);
     }
 
     /**
@@ -89,13 +90,22 @@ class StarcastController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $editstarcast = starcast::findOrfail($id);
+        /*$editstarcast = starcast::findOrfail($id);
         $editstarcast->name =$request->name;
         $editstarcast->bio =$request->bio;
         $editstarcast->birth_date =$request->birth_date;
         $editstarcast->worked_movie =$request->worked_movie;
         $editstarcast->save();
+        return redirect('starcastlist');*/
+
+        starcast::where('id', $id)->update([
+            'name' => $request->name,
+            'bio' => $request->bio,
+            'birth_date' => $request->birth_date,
+            'worked_movie' => $request->worked_movie,
+        ]);
         return redirect('starcastlist');
+
     }
 
     /**

@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StarcastController;
 use App\Http\Controllers\TheatreController;
+use App\Http\Controllers\BooknowController;
 
 
 
@@ -67,5 +68,12 @@ Route::get('/moviedetails/{m_id}',[MovieController::class,'moviedetails']);
 Route::get('/logout',[AdminController::class,'logout']);
 
 Route::get('/search/', [MovieController::class,'search'])->name('search');
+
+Route::get('/movieidname/{id}',[MovieController::class,'movieidname']);
+
+Route::get('/booknow/{id}',[BooknowController::class,'create']);
+
+Route::post('bookticket',[BooknowController::class,'store']);
+
 
 
