@@ -120,4 +120,9 @@ class StarcastController extends Controller
         $starcast->delete();
         return redirect('starcastlist');
     }
+
+//    public function staradmindash()
+//    {
+//        return view('admindashboard',['starcast' => starcast::all()]);
+//    }
 }

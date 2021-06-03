@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBooknowsTable extends Migration
+class CreateShowsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateBooknowsTable extends Migration
      */
     public function up()
     {
-        Schema::create('booknows', function (Blueprint $table) {
+        Schema::create('shows', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('m_id');
-            $table->string('m_name');
-            $table->string('person_name');
-            $table->integer('numoftkt');
+            $table->string('name');
+            $table->string('start_time');
+            $table->string('end_time');
+            $table->bigInteger('theatre_id');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateBooknowsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('booknows');
+        Schema::dropIfExists('shows');
     }
 }

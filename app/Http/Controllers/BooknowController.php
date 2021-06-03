@@ -24,7 +24,7 @@ class BooknowController extends Controller
      */
     public function create()
     {
-        return view('booknow');
+        //
     }
 
     /**
@@ -35,14 +35,20 @@ class BooknowController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
+        $seats=$request->input('seat');
+        $seat=implode(",",$seats);
         $booknow = booknow::create([
             'm_id' => $request->m_id,
             'm_name' => $request->m_name,
+            'user_id' => $request->session()->get('user'),
             'person_name' => $request->person_name,
+            'seat_num'=>$seat,
+            'theatre_id' => $request->theatre_id,
+            'show_id' => $request->show_id,
             'numoftkt' => $request->numoftkt,
         ]);
-        return redirect('home');
+
+        return redirect('showticket');
     }
 
     /**
@@ -53,9 +59,14 @@ class BooknowController extends Controller
      */
     public function show(booknow $booknow)
     {
-        //
+        return view('bookinglist',['bookinglist'=> booknow::all()]);
     }
-
+    public function show2()
+    {
+        $user_id = session()->get('user');
+        $data = booknow::where( 'user_id' , $user_id)->get();
+        return view('showticket' , ['data' => $data]);
+    }
     /**
      * Show the form for editing the specified resource.
      *

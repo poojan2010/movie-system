@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\booknow;
 use App\Models\movie;
+use App\Models\show;
+use App\Models\theatre;
 use Illuminate\Http\Request;
+use App\Models\starcast;
+
 
 class MovieController extends Controller
 {
@@ -101,8 +105,9 @@ class MovieController extends Controller
     {
         //dd($id);
         $booknow = movie::find($id);
+        $booktheatre = ['theaterlist' => theatre::all(),'show' => show::all()];
         //dd($booknow);
-        return view('booknow',compact('booknow'));
+        return view('booknow',compact('booknow') , $booktheatre);
     }
 
     /**
@@ -206,6 +211,12 @@ class MovieController extends Controller
         //dd($posts);
         // Return the search view with the resluts compacted
         return view('home', compact('movielist'));
+    }
+
+    public function admindash()
+    {
+        $data = ['movie' => movie::all(),'theatre' => theatre::all() , 'booknow' => booknow::all() ];
+        return view('admindashboard', ['data' => $data]);
     }
 
 

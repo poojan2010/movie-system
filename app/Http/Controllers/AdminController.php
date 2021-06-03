@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\movie;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +18,7 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
-        $request->validate([
+       /* $request->validate([
            'email' => 'required',
            'password' => 'required'
         ]);
@@ -29,7 +30,7 @@ class AdminController extends Controller
 
             if($data['email'] == 'admin@gmail.com')
             {
-                return redirect('/movielist');
+                return redirect('/admindashboard');
             }
             else
             {
@@ -40,7 +41,37 @@ class AdminController extends Controller
         {
             echo "<script>alert('invalid Email and Password')</script>";
             return redirect('/');
+        }*/
+
+        $input = $request->all();
+
+        $this->validate($request,[
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = User::where("email",$request->email)->get();
+
+        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
+        {
+            $request->session()->regenerate();
+            if($input['email']=="admin@gmail.com" && $input['password']=="admin123")
+            {
+                return redirect('/admindashboard');
+            }
+            else
+            {
+
+                $request->session()->put("user",$user[0]->id);
+                return redirect('/home');
+            }
         }
+        else
+        {
+            return redirect('/')->with('error', 'Email/Password are Invalid.');
+        }
+
+
     }
 
     /**

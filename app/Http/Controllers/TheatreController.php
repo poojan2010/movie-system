@@ -64,6 +64,16 @@ class TheatreController extends Controller
         return view('theatrelist',['theatrelist'=> theatre::all()]);
     }
 
+    public function show2(theatre $theatre)
+    {
+        return view('addshow',['theatrelist'=> theatre::all()]);
+    }
+
+    public function show3(theatre $theatre)
+    {
+        return view('booknow',['theatrelist'=> theatre::all()]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -105,4 +115,6 @@ class TheatreController extends Controller
         $theatre->delete();
         return redirect('theatrelist');
     }
+
+
 }

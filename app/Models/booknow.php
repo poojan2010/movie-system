@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class booknow extends Model
 {
     use HasFactory;
-    protected $fillable = ['m_id','m_name','person_name','numoftkt'];
+    protected $fillable = ['m_id','m_name','user_id','person_name','booking_date','seat_num','theatre_id','show_id','numoftkt'];
 }
