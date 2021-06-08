@@ -40,6 +40,9 @@
         @endforeach
         </tbody>
     </table>
+    <div style="margin-left: 42%;">
+        {{ $starcastlist->links() }}
+    </div>
 </div>
 </body>
 </html>

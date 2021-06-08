@@ -61,7 +61,7 @@ class TheatreController extends Controller
      */
     public function show(theatre $theatre)
     {
-        return view('theatrelist',['theatrelist'=> theatre::all()]);
+        return view('theatrelist',['theatrelist'=> theatre::paginate(5)]);
     }
 
     public function show2(theatre $theatre)

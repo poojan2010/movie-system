@@ -4,6 +4,7 @@
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src="../Images/radheslide.jpg" class="d-block w-100 h-50" alt="...">
+
         </div>
         <div class="carousel-item">
             <img src="../Images/laxmislide.jpg" class="d-block w-100 h-50" alt="...">
@@ -13,6 +14,7 @@
         </div>
         <div class="carousel-item">
             <img src="../Images/msdhonislide.jpg" class="d-block w-100 h-50"  alt="...">
+
         </div>
     </div>
 </div>
@@ -39,8 +41,9 @@
 <script>
     var myCarousel = document.querySelector('#myCarousel')
     var carousel = new bootstrap.Carousel(myCarousel, {
-        interval: 2000,
+        interval: 500,
         wrap: false
     })
+
 </script>
 </body>

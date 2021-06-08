@@ -64,7 +64,7 @@ class ShowController extends Controller
     public function show(show $show)
     {
 
-        return view('showlist',['showlist'=> show::all()]);
+        return view('showlist',['showlist'=> show::paginate(9)]);
 
     }
 

@@ -65,7 +65,7 @@ class StarcastController extends Controller
      */
     public function show(starcast $starcast)
     {
-        return view('starcastlist',['starcastlist'=> starcast::all()]);
+        return view('starcastlist',['starcastlist'=> starcast::paginate(4)]);
     }
 
     /**

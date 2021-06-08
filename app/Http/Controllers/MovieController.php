@@ -89,7 +89,7 @@ class MovieController extends Controller
      */
     public function show()
     {
-        return view('movielist',['movielist'=> movie::all()]);
+        return view('movielist',['movielist'=> movie::paginate(5)]);
     }
 
     public function usershow()

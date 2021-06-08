@@ -44,6 +44,9 @@
     @endforeach
     </tbody>
 </table>
+    <div style="margin-left: 42%;">
+        {{ $movielist->links() }}
+    </div>
 </div>
 </body>
 </html>

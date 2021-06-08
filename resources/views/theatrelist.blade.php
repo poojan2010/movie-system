@@ -38,6 +38,9 @@
         @endforeach
         </tbody>
     </table>
+    <div style="margin-left: 42%;">
+        {{ $theatrelist->links() }}
+    </div>
 </div>
 </body>
 </html>

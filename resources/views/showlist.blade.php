@@ -39,6 +39,9 @@
         @endforeach
         </tbody>
     </table>
+    <div style="margin-left: 42%;">
+        {{ $showlist->links() }}
+    </div>
 </div>
 </body>
 </html>
