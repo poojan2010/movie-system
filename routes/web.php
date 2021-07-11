@@ -8,6 +8,7 @@ use App\Http\Controllers\StarcastController;
 use App\Http\Controllers\TheatreController;
 use App\Http\Controllers\BooknowController;
 use App\Http\Controllers\ShowController;
+use App\Http\Controllers\EmailController;
 
 
 

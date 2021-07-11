@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\booknow;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class BooknowController extends Controller
 {
@@ -35,6 +37,8 @@ class BooknowController extends Controller
      */
     public function store(Request $request)
     {
+        $email = Auth::user()->email;
+//        dd($email);
         $seats=$request->input('seat');
         $seat=implode(",",$seats);
         $booknow = booknow::create([
@@ -47,6 +51,18 @@ class BooknowController extends Controller
             'show_id' => $request->show_id,
             'numoftkt' => $request->numoftkt,
         ]);
+        $data = [
+            'subject' => "You booked movie ticket successfully",
+            'email' => $email,
+            'content' => $request->content
+        ];
+
+
+        Mail::send('email', $data, function($message) use ($data) {
+            $message->to($data['email'])
+                ->subject($data['subject']);
+        });
+
 
         return redirect('showticket');
     }
@@ -87,7 +103,7 @@ class BooknowController extends Controller
      */
     public function update(Request $request, booknow $booknow)
     {
-        //
+
     }
 
     /**
@@ -98,6 +114,6 @@ class BooknowController extends Controller
      */
     public function destroy(booknow $booknow)
     {
-        //
+
     }
 }

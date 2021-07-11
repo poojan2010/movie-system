@@ -83,6 +83,46 @@ class movieController extends Controller
 
     }
 
+    public function show()
+    {
+        /*return view('movielist',['movielist'=> movie::paginate(5)]);*/
+
+        $movielist = movie::paginate(5);
+
+        $response['status'] = 'Success';
+        $response['message'] = 'Show';
+        $response['data'] = $movielist;
+
+        return $response;
+    }
+
+    public function moviedetails($m_id)
+    {
+        /*return view('moviedetails',['movielist'=> movie::where('m_id',$m_id)->first()]);*/
+
+        $moviedetails = movie::where('m_id',$m_id)->first();
+
+        $response['status'] = 'Success';
+        $response['message'] = 'Show';
+        $response['data'] = $moviedetails;
+
+        return $response;
+    }
+    public function movieshow()
+    {
+       /* return view('home',['movielist'=> movie::latest()->get()]);*/
+
+        $movie = movie::get();
+
+        $response['status'] = 'Success';
+        $response['message'] = 'Show';
+        $response['data'] = $movie;
+
+        return $response;
+    }
+
+
+
     public function destroy($m_id)
     {
         $movie = movie::find($m_id);

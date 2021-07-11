@@ -43,6 +43,8 @@ class AdminController extends Controller
             return redirect('/');
         }*/
 
+
+
         $input = $request->all();
 
         $this->validate($request,[

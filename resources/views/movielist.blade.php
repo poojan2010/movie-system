@@ -48,5 +48,5 @@
         {{ $movielist->links() }}
     </div>
 </div>
-</body>
+
 </html>
